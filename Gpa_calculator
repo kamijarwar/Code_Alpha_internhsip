@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int numCourses;
+    float grade, cgpa;
+    int creditHours;
+
+    float totalGradePoints = 0;
+    int totalCredits = 0;
+
+    cout << "Enter number of courses: ";
+    cin >> numCourses;
+
+    vector<float> grades(numCourses);
+    vector<int> credits(numCourses);
+
+    for (int i = 0; i < numCourses; i++) {
+        cout << "\nCourse " << i + 1 << endl;
+
+        cout << "Enter Grade Point: ";
+        cin >> grade;
+
+        cout << "Enter Credit Hours: ";
+        cin >> creditHours;
+
+        grades[i] = grade;
+        credits[i] = creditHours;
+
+        totalGradePoints += grade * creditHours;
+        totalCredits += creditHours;
+    }
+
+    cgpa = totalGradePoints / totalCredits;
+
+    cout << "\n========== Result ==========" << endl;
+
+    for (int i = 0; i < numCourses; i++) {
+        cout << "Course " << i + 1
+             << " | Grade: " << grades[i]
+             << " | Credit Hours: " << credits[i]
+             << endl;
+    }
+
+    cout << "\nTotal Credits: " << totalCredits << endl;
+    cout << "Total Grade Points: " << totalGradePoints << endl;
+    cout << "Final CGPA: " << fixed << setprecision(2) << cgpa << endl;
+
+    return 0;
+}
